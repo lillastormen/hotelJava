@@ -20,8 +20,14 @@ function changeRoomPrice($roomId, $price){
 
 }
 
+function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate){
+    $db = connect('hotel.sqlite3');
+    $query = $db->query("INSERT INTO Bookings (GuestName, GuestSurname, ArrivalDate, DepartureDate) VALUES ( '$guestName', '$guestSurname', '$arrivalDate', '$departureDate')");
+}
+
+
 $hotel = getHotel();
 
-changeRoomPrice(1, 12);
+createBooking ('Karolina', 'Limanowska', '2024-01-15', '2024-01-17');
 
 ?>
