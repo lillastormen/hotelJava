@@ -14,9 +14,15 @@ function getHotel(){
 
 function getBookingById($bookingId){
     $db = connect('hotel.sqlite3');
-    $query = $db->query("SELECT * FROM Bookings WHERE BookingId=".$bookingId);
+    $query = $db->query("SELECT * FROM Bookings WHERE BookingId=" . $bookingId);
     $hotel = $query->fetch(); 
     return $hotel;
+}
+
+function changeRoomPrice($roomId, $price){
+    $db = connect('hotel.sqlite3');
+    $query = $db->query("UPDATE Rooms SET Price =" . $price . " WHERE . RoomId=" . $roomId);
+
 }
 
 
