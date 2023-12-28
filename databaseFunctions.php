@@ -20,31 +20,30 @@ function changeRoomPrice($roomId, $price){
 
 }
 
-function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate, $bookingId, $featuresIdArray){
+function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate, $featuresIdArray){ 
     $db = connect('hotel.sqlite3');
 
     $query = $db->query(
         "INSERT INTO Bookings (GuestName, GuestSurname, ArrivalDate, DepartureDate) 
         VALUES ('$guestName', '$guestSurname', '$arrivalDate', '$departureDate')");
-    $bookingId = $db->lastInsertId(); //gets the ID of the lasy booking 
+    $bookingId = $db->lastInsertId(); //gets the ID of the last booking 
 
 
-    if(count($featuresIdArray)>0) 
+    if(count($featuresIdArray)) {
 
-    $bookedFeaturesString = "";
+        $bookedFeaturesString = "";
 
-    foreach($featuresIdArray as $featureId){
-		$bookedFeaturesString .= "(".$bookingId.",".$featureId."),"; 
-		// .= glues together the left and the right string
-	}
+        foreach($featuresIdArray as $featureId){
+            $bookedFeaturesString .= "(".$bookingId.",".$featureId."),"; 
+            // .= glues together the left and the right string
+        }
 
-    $query = $db->query(
-        "INSERT INTO BookedFeatures (BookingId, FeatureId) VALUES ". substr($bookedFeaturesString, 0, -1));
-
-
+        $query = $db->query(
+            "INSERT INTO BookedFeatures (BookingId, FeatureId) VALUES ". substr($bookedFeaturesString, 0, -1));
+    }
 }
 
-createBooking('Marta', 'Kowalska', '2024-01-05', '2024-01-06','' , 1);
+createBooking('Marta', 'Kowalska', '2024-01-05', '2024-01-06', [1,2]);
 
 
 
