@@ -20,12 +20,12 @@ function changeRoomPrice($roomId, $price){
 
 }
 
-function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate, $featuresIdArray){ 
+function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate, $roomId, $featuresIdArray){ 
     $db = connect('hotel.sqlite3');
 
     $query = $db->query(
-        "INSERT INTO Bookings (GuestName, GuestSurname, ArrivalDate, DepartureDate) 
-        VALUES ('$guestName', '$guestSurname', '$arrivalDate', '$departureDate')");
+        "INSERT INTO Bookings (GuestName, GuestSurname, ArrivalDate, DepartureDate, RoomId) 
+        VALUES ('$guestName', '$guestSurname', '$arrivalDate', '$departureDate', '$roomId')");
     $bookingId = $db->lastInsertId(); //gets the ID of the last booking 
 
 
@@ -43,10 +43,20 @@ function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate,
     }
 }
 
-createBooking('Marta', 'Kowalska', '2024-01-05', '2024-01-06', [1,2]);
+//createBooking('Marta', 'Kowalska', '2024-01-05', '2024-01-06', 1, [1,2]);
+
+function calculateTotalCost ($bookingId){
+    $db = connect('hotel.sqlite3');
+    
+    $query = $db->query(
+    "SELECT julianday(bookings.departureDate) - julianday(bookings.arrivalDate) AS days,
+    SUM(rooms.roomPrice * (julianday(bookings.departureDate) - julianday(bookings.arrivalDate))) AS roomCost
+    FROM Rooms
+    JOIN Bookings ON Rooms.RoomId = Bookings.RoomId;");
+    $roomCost = $query->fetch(); 
+    return $roomCost;
+}
 
 
-
-
-
+print_r(calculateTotalCost(1));
 ?>
