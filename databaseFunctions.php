@@ -41,32 +41,67 @@ function changeRoomPrice($roomId, $price){
     return $roomPrice;
 }
 
+//function to check if dates of bookings are not overlaping before making a booking
+function checkRoomAvailability($roomId, $arrivalDate, $departureDate){
+
+    $db = connect('hotel.sqlite3');
+    $query = $db->query(
+        "SELECT RoomId
+        FROM Bookings
+        WHERE RoomId = :roomId
+        AND 
+        (
+	        (DepartureDate > :arrivalDate AND DepartureDate < :departureDate)
+	        OR
+			(ArrivalDate > :arrivalDate AND ArrivalDate < :departureDate)
+		)"
+    );
+    
+    $query->bindParam(':roomId', $roomId, PDO::PARAM_INT);
+    $query->bindParam(':arrivalDate', $arrivalDate, PDO::PARAM_STR);
+    $query->bindParam(':departureDate', $departureDate, PDO::PARAM_STR);
+
+
+    $result = $query->fetch();
+
+    return empty($result);
+}
+
+
+
+
 
 //function to create a booking
 function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate, $roomId, $featuresIdArray){ 
-    
-    $db = connect('hotel.sqlite3');
-    $query = $db->query(
-        "INSERT INTO Bookings (GuestName, GuestSurname, ArrivalDate, DepartureDate, RoomId) 
-        VALUES ('$guestName', '$guestSurname', '$arrivalDate', '$departureDate', '$roomId')");
-    $bookingId = $db->lastInsertId(); //gets the ID of the last booking 
 
-    if(count($featuresIdArray)) {
-
-        $bookedFeaturesString = "";
-
-        foreach($featuresIdArray as $featureId){
-            $bookedFeaturesString .= "(".$bookingId.",".$featureId."),"; 
-            // .= glues together the left and the right string
-        }
-
+    if(checkRoomAvailability($roomId, $arrivalDate, $departureDate)){
+        $db = connect('hotel.sqlite3');
         $query = $db->query(
-            "INSERT INTO BookedFeatures (BookingId, FeatureId) VALUES ". substr($bookedFeaturesString, 0, -1));
+            "INSERT INTO Bookings (GuestName, GuestSurname, ArrivalDate, DepartureDate, RoomId) 
+            VALUES ('$guestName', '$guestSurname', '$arrivalDate', '$departureDate', '$roomId')");
+        $bookingId = $db->lastInsertId(); //gets the ID of the last booking 
+    
+        if(count($featuresIdArray)) {
+    
+            $bookedFeaturesString = "";
+    
+            foreach($featuresIdArray as $featureId){
+                $bookedFeaturesString .= "(".$bookingId.",".$featureId."),"; 
+                // .= glues together the left and the right string
+            }
+    
+            $query = $db->query(
+                "INSERT INTO BookedFeatures (BookingId, FeatureId) VALUES ". substr($bookedFeaturesString, 0, -1));
+        }
+    
+        return getBooking($bookingId);
+    } else {
+        return "Room unavailable";
     }
-
-    return getBooking($bookingId);
+   
 }
 
+//creating a function for getting the booking info
 function getBooking($bookingId){
     return [
         ...getHotel(),
@@ -75,8 +110,9 @@ function getBooking($bookingId){
     ];  
 }
 
-//print_r(createBooking('Mary', 'Jane', '2024-01-01', '2024-01-05', 1, [1,2]));
-print_r(getBooking(10));
+print_r(createBooking('Mary', 'Jane', '2024-01-01', '2024-01-05', 1, [1,2]));
+//print_r(getBooking(10));
+
 //function to get the total amount of days, cost of the room, cost of the features and the total cost of all of these
 function calculateTotalCost ($bookingId){
     $db = connect('hotel.sqlite3');
