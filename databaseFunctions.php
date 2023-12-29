@@ -4,7 +4,7 @@
 function getHotel(){
 
     $db = connect('hotel.sqlite3');
-    $query = $db->query("SELECT Name, Island, Stars FROM Hotel");
+    $query = $db->query("SELECT * FROM Hotel");
     
     $result = $query->fetch(); 
     $hotel = $result['Name'];
@@ -18,6 +18,7 @@ function getHotel(){
     ];
 }
 
+
 //function to get a booking ID
 function getBookingById($bookingId){
     
@@ -28,6 +29,8 @@ function getBookingById($bookingId){
     return $booking;
 }
 
+
+
 //function to change the price of the room
 function changeRoomPrice($roomId, $price){
     
@@ -37,6 +40,7 @@ function changeRoomPrice($roomId, $price){
     $roomPrice = $query->fetch(); 
     return $roomPrice;
 }
+
 
 //function to create a booking
 function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate, $roomId, $featuresIdArray){ 
@@ -59,11 +63,9 @@ function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate,
         $query = $db->query(
             "INSERT INTO BookedFeatures (BookingId, FeatureId) VALUES ". substr($bookedFeaturesString, 0, -1));
     }
-
-    
 }
 
-//createBooking('Jane', 'dndnndndn', '2024-01-05', '2024-01-06', 3, [2,3]);
+//createBooking('Mary', 'Jane', '2024-01-01', '2024-01-05', 1, [1,2]);
 
 //function to get the total amount of days, cost of the room, cost of the features and the total cost of all of these
 function calculateTotalCost ($bookingId){
@@ -77,30 +79,50 @@ function calculateTotalCost ($bookingId){
         JOIN Bookings ON Rooms.RoomId = Bookings.RoomId
         JOIN BookedFeatures ON Features.FeatureId = BookedFeatures.Id");
         
-        $result = $query->fetch();
+    $result = $query->fetch();
 
-        $roomCost = $result['roomCost'];
-        $featureCost = $result['featureCost'];
+    $roomCost = $result['roomCost'];
+    $featureCost = $result['featureCost'];
 
-        $totalCost = $roomCost + $featureCost;
+    $totalCost = $roomCost + $featureCost;
 
-        return [
-            'roomCost' => $roomCost,
-            'featureCost' => $featureCost,
-            'totalCost' => $totalCost
-        ];
+    return [
+        'roomCost' => $roomCost,
+        'featureCost' => $featureCost,
+        'totalCost' => $totalCost
+    ];
 }
 
 //print_r(calculateTotalCost(1));
 
-//function getBookingFeatures(){
-    //$db = connect('hotel.sqlite3');
+function getBookingFeatures($bookingId){
+    $db = connect('hotel.sqlite3');
 
-   // $query = $sb->query(
-     //   "SELECT FeatureType, FeaturePrice "
-    //)
+    $query = $db->query(
+       "SELECT Features.FeatureType, Features.FeaturePrice 
+       FROM Features
+       JOIN BookedFeatures ON Features.FeatureId = BookedFeatures.Id
+       JOIN Bookings ON Bookings.BookingId = BookedFeatures.BookingId
+       WHERE Bookings.BookingId = $bookingId");
 
-//}
+    $results = $query->fetchAll();
+
+    $featuresInfo = [];
+    foreach ($results as $result) {
+        $featureType = $result['FeatureType'];
+        $featurePrice = $result['FeaturePrice'];
+
+        $featuresInfo[] = [
+            'FeatureType' => $featureType,
+            'FeaturePrice' => $featurePrice
+        ];
+    }
+
+    return $featuresInfo;  
+}
+
+print_r(getBookingFeatures(1));
+
 ?>
 
 
