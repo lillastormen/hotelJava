@@ -63,10 +63,20 @@ function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate,
         $query = $db->query(
             "INSERT INTO BookedFeatures (BookingId, FeatureId) VALUES ". substr($bookedFeaturesString, 0, -1));
     }
+
+    return getBooking($bookingId);
 }
 
-//createBooking('Mary', 'Jane', '2024-01-01', '2024-01-05', 1, [1,2]);
+function getBooking($bookingId){
+    return [
+        ...getHotel(),
+        ...calculateTotalCost($bookingId),
+        ...getBookingFeatures($bookingId)
+    ];  
+}
 
+//print_r(createBooking('Mary', 'Jane', '2024-01-01', '2024-01-05', 1, [1,2]));
+print_r(getBooking(10));
 //function to get the total amount of days, cost of the room, cost of the features and the total cost of all of these
 function calculateTotalCost ($bookingId){
     $db = connect('hotel.sqlite3');
@@ -101,11 +111,12 @@ function getBookingFeatures($bookingId){
     $query = $db->query(
        "SELECT Features.FeatureType, Features.FeaturePrice 
        FROM Features
-       JOIN BookedFeatures ON Features.FeatureId = BookedFeatures.Id
+       JOIN BookedFeatures ON Features.FeatureId = BookedFeatures.FeatureId
        JOIN Bookings ON Bookings.BookingId = BookedFeatures.BookingId
        WHERE Bookings.BookingId = $bookingId");
 
     $results = $query->fetchAll();
+
 
     $featuresInfo = [];
     foreach ($results as $result) {
@@ -117,11 +128,10 @@ function getBookingFeatures($bookingId){
             'FeaturePrice' => $featurePrice
         ];
     }
-
     return $featuresInfo;  
 }
 
-print_r(getBookingFeatures(1));
+//print_r(getBookingFeatures(10));
 
 ?>
 
