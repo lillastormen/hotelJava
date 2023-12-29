@@ -2,30 +2,45 @@
 
 //functipon to get the name of the hotel
 function getHotel(){
+
     $db = connect('hotel.sqlite3');
-    $query = $db->query("SELECT Name FROM Hotel");
-    $hotel = $query->fetch(); 
-    return $hotel;
+    $query = $db->query("SELECT Name, Island, Stars FROM Hotel");
+    
+    $result = $query->fetch(); 
+    $hotel = $result['Name'];
+    $island = $result['Island'];
+    $stars = $result['Stars'];
+
+    return [
+        'Hotel' => $hotel,
+        'Island' => $island,
+        'Stars' => $stars
+    ];
 }
 
 //function to get a booking ID
 function getBookingById($bookingId){
+    
     $db = connect('hotel.sqlite3');
     $query = $db->query("SELECT * FROM Bookings WHERE BookingId=" . $bookingId);
+    
     $booking = $query->fetch(); 
     return $booking;
 }
 
 //function to change the price of the room
 function changeRoomPrice($roomId, $price){
+    
     $db = connect('hotel.sqlite3');
     $query = $db->query("UPDATE Rooms SET RoomPrice =" . $price . " WHERE RoomId=" . $roomId);
+    
     $roomPrice = $query->fetch(); 
     return $roomPrice;
 }
 
 //function to create a booking
 function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate, $roomId, $featuresIdArray){ 
+    
     $db = connect('hotel.sqlite3');
     $query = $db->query(
         "INSERT INTO Bookings (GuestName, GuestSurname, ArrivalDate, DepartureDate, RoomId) 
@@ -44,9 +59,11 @@ function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate,
         $query = $db->query(
             "INSERT INTO BookedFeatures (BookingId, FeatureId) VALUES ". substr($bookedFeaturesString, 0, -1));
     }
+
+    
 }
 
-createBooking('Jane', 'dndnndndn', '2024-01-05', '2024-01-06', 3, [2,3]);
+//createBooking('Jane', 'dndnndndn', '2024-01-05', '2024-01-06', 3, [2,3]);
 
 //function to get the total amount of days, cost of the room, cost of the features and the total cost of all of these
 function calculateTotalCost ($bookingId){
@@ -72,11 +89,18 @@ function calculateTotalCost ($bookingId){
             'featureCost' => $featureCost,
             'totalCost' => $totalCost
         ];
-
-    
-
 }
 
+//print_r(calculateTotalCost(1));
 
-print_r(calculateTotalCost(1));
+//function getBookingFeatures(){
+    //$db = connect('hotel.sqlite3');
+
+   // $query = $sb->query(
+     //   "SELECT FeatureType, FeaturePrice "
+    //)
+
+//}
 ?>
+
+
