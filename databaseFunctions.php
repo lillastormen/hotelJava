@@ -103,11 +103,11 @@ function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate,
 
 //creating a function for getting the booking info
 function getBooking($bookingId){
-    return [
+    return json_encode([
         ...getHotel(),
         ...calculateTotalCost($bookingId),
         ...getBookingFeatures($bookingId)
-    ];  
+    ]);  
 }
 
 print_r(createBooking('Mary', 'Jane', '2024-01-01', '2024-01-05', 1, [1,2]));
@@ -164,7 +164,7 @@ function getBookingFeatures($bookingId){
             'FeaturePrice' => $featurePrice
         ];
     }
-    return $featuresInfo;  
+    return ['features' => $featuresInfo];  
 }
 
 //print_r(getBookingFeatures(10));
