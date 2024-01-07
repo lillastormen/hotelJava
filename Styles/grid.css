@@ -1,27 +1,18 @@
 .container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto;
     gap: 0px 0px 0px;
     grid-auto-flow: column;
     grid-template-areas: 
-    "hero hero hero"
-    "rooms rooms rooms"
-    "deal deal deal"
-    "features features features"
-    "info info info"
-    "footer footer footer";
+    "hero"
+    "rooms"
+    "deal"
+    "features"
+    "info"
+    "footer";
     width: 100%;
     margin: 0;
-}
-
-header {
-    width: 100%;
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    z-index: 10;
-    background-color:rgba(255, 255, 255, 0.5)
 }
 
 .hero {
@@ -33,9 +24,14 @@ header {
 
 .rooms {
     grid-area: rooms;
-    display: flex;
-    justify-content: center;
+
 }
+
+.roomImageContainer {
+    display: flex;
+    gap: 10px;
+}
+
 
 .deal {
     grid-area: deal;
@@ -46,6 +42,10 @@ header {
 
 .features {
     grid-area: features;
+}
+
+.featureImageContainer {
+    display: flex;
 }
 
 .info {

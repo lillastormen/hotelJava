@@ -1,9 +1,9 @@
 :root {
---keppel: #55B9A9ff;
---brunswick-green: #0A574Fff;
---office-green: #427923ff;
---prussian-blue: #032F48ff;
---shamrock-green: #069A68ff;
---old-lace: rgb(239, 223, 186);
---chamoisee: #9F7B46ff;
+    --lemon-chiffon: #F9EFC9ff;
+    --lion: rgba(164, 135, 104, 0.877);
+    --brown-sugar: #A56D52ff;
+    --gunmetal: #1E2829ff;
+    --brunswick-green: #275347ff;
+    --cadet: #596A6F;
 }
+

@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="/Styles/styles.css">
         <link rel="stylesheet" href="/Styles/grid.css">
         <link rel="stylesheet" href="/Styles/variables.css">
+        <link rel="stylesheet" href="/Styles/fonts.css">
         <title>Sahaja Resort</title>
     </head>
 
@@ -14,7 +15,7 @@
         <header>
             <nav>
                 <div class="logo">
-                    <img src="" alt="logo">
+                    <img src="/Assets/logo1.png" alt="logo">
                 </div>
                 <div class="menu">
                     <a href="/rooms.php">Our Rooms</a>

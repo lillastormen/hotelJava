@@ -1,5 +1,5 @@
 <footer class="footer">
-                <h4>Contact info</h4>
+                <h5>Contact info</h5>
             </footer>
         </div>    
     </body>
