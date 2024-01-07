@@ -33,13 +33,15 @@ header {
 
 .rooms {
     grid-area: rooms;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .deal {
     grid-area: deal;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .features {
