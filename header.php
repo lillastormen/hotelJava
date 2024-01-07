@@ -5,7 +5,7 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width"/>
         <link rel="stylesheet" href="/Styles/styles.css">
-        <link rel="stylesheet" href="/Styles/grid.css">
+        <link rel="stylesheet" href="/Styles/gridMainPage.css">
         <link rel="stylesheet" href="/Styles/variables.css">
         <link rel="stylesheet" href="/Styles/fonts.css">
         <title>Sahaja Resort</title>
