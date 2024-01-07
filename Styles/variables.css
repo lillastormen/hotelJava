@@ -1,9 +1,11 @@
 :root {
     --lemon-chiffon: #F9EFC9ff;
+    --lemon-chiffon-transparent: rgba(249, 239, 201, 0.539);
     --lion: rgba(164, 135, 104, 0.877);
     --brown-sugar: #A56D52ff;
     --gunmetal: #1E2829ff;
     --brunswick-green: #275347ff;
     --cadet: #596A6F;
+    --navigation: #d6c9b763;
 }
 

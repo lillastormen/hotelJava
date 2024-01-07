@@ -17,8 +17,15 @@
     </div>
     <div class="newsletter">
         <h5>Join our newsletter</h5>
+        <form>
+            <div class="newsletterContainer">
+                <input type="email" placeholder="Email">
+            </div>
+            <div class="submitContainer">
+                <input type="submit" value="Subscribe">
+            </div>
+        </form>
     </div>
-
             </footer>
         </div>    
     </body>

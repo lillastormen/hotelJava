@@ -33,6 +33,6 @@ h5 {
     font-weight: 100;
 }
 
-p {
+p, a {
     font-family:'Raleway';
 }

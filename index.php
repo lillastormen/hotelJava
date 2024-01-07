@@ -4,7 +4,7 @@
     <div class="gradient"></div>     
     <span class="heroSpan">
         <h1>Welcome to Sahaja Resort</h1>
-        <h3>Where every detail is designed for your comfort, and every moment promises a sense of understated luxury and repose</h3> 
+        <h3>Every detail is designed for your comfort, and every moment promises a sense of understated luxury and repose</h3> 
     </span>
 </section>
 
@@ -18,10 +18,10 @@
             <a href="/rooms.php"><img class="budgetRoom" src="/Assets/budgetRoom3.png"></a>
         </div>
         <div>
-            <a href="/rooms.php"><img  class="standardRoom" src="/Assets/standardRoom1.png"></a>
+            <a href="/rooms.php"><img  class="standardRoom" src="/Assets/luxuryRoom1.png"></a>
         </div>
         <div>
-            <a href="/rooms.php"><img  class="luxuryRoom" src="/Assets/luxuryRoom1.png"></a>
+            <a href="/rooms.php"><img  class="luxuryRoom" src="/Assets/standardRoom1.png"></a>
         </div>
     </div>
 </section>
