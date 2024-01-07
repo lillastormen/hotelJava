@@ -48,9 +48,13 @@
     </div>
 </section>
 
+<section class="breakBlock"></section>
+
 <section class="info lightFont">
     <div class="block"></div>
     <h4>Our resort offers not just accommodation, but an escape into a world where the pace of life harmonizes with the rhythmic pulse of the forest. Whether it's a leisurely stroll through the jungle trails, a refreshing dip in natural springs, or simply unwinding on your private balcony,every moment is an invitation to connect with the authentic spirit of Indonesia.</h4>
 </section>
+
+
 
 <?php require __DIR__ . '/footer.php';?>

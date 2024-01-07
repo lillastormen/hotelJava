@@ -10,9 +10,10 @@
     "deal"
     "features"
     "info"
+    "breakBlock"
     "footer";
     width: 100%;
-    margin: 0;
+    margin: 0px;
 }
 
 .hero {
@@ -55,4 +56,9 @@
 .footer {
     grid-area: footer;
     display: flex;
+    justify-content: space-between;
+}
+
+.breakBlock {
+    grid-area: breakBlock;
 }

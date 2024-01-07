@@ -1,7 +1,8 @@
-<footer class="footer">
+<footer class="footer lightFont">
+    
     <div class="phoneNumber">
         <h5>Contact us</h5>
-            <p>Phone: +62 123 456 7890</p>
+            <p>+62 123 456 7890</p>
     </div>
     <div class="adress">
         <h5>Pay us a visit</h5>

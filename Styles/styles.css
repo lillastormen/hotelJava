@@ -109,3 +109,13 @@ nav {
 .info h4 {
     padding: 0px 120px 45px 120px;
 }
+
+.footer {
+    text-align: center;
+    background-color: var(--gunmetal);
+}
+
+.breakBlock {
+    max-width: 100%;
+    height: 500px;
+}
