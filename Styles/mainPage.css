@@ -1,0 +1,29 @@
+.container {
+    margin: 0px;
+}
+
+.hero {
+    display: flex;
+    justify-content:center;
+    align-items: flex-end;
+}   
+
+.roomImageContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.deal {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.featureImageContainer {
+    display: flex;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+}

@@ -98,19 +98,20 @@ nav {
 
 .features img {
     width: 100%;
-    padding: 50px;
+    padding: 5px;
     border-radius: 75px;
     border: solid 2px;
     border-color: var(--cadet);    
 }
 
+.features div { 
+    margin: 5px;
+}
+
 .info {
     background-color: var(--brunswick-green);
     text-align: center;
-}
-
-.info h4 {
-    padding: 0px 120px 45px 120px;
+    padding: 40px;
 }
 
 .footer {
@@ -119,7 +120,6 @@ nav {
 }
 
 .breakBlock {
-    max-width: 100%;
     height: 500px;
 }
 
