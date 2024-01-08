@@ -1,5 +1,5 @@
 <?php
-
+ 
 //functipon to get the name of the hotel
 function getHotel(){
 
@@ -110,7 +110,7 @@ function getBooking($bookingId){
     ]);  
 }
 
-print_r(createBooking('Mary', 'Jane', '2024-01-01', '2024-01-05', 1, [1,2]));
+//print_r(createBooking('Mary', 'Jane', '2024-01-01', '2024-01-05', 1, [1,2]));
 //print_r(getBooking(10));
 
 //function to get the total amount of days, cost of the room, cost of the features and the total cost of all of these
@@ -168,6 +168,20 @@ function getBookingFeatures($bookingId){
 }
 
 //print_r(getBookingFeatures(10));
+
+function getBookingsForCalendar(){
+    $db = connect('hotel.sqlite3');
+
+    $query = $db->query(
+        "SELECT r.RoomName, b.ArrivalDate, b.DepartureDate
+        FROM Rooms r
+        JOIN Bookings b ON r.roomId = b.roomId;"
+    );
+
+    $results = $query->fetchAll();
+
+    return $results;
+}
 
 ?>
 

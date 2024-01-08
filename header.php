@@ -1,3 +1,7 @@
+<?php
+require __DIR__ . '/functions.php';
+?>
+
 <!DOCTYPE html>
 <html lang="eng">
 
