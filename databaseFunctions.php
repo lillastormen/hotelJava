@@ -169,19 +169,24 @@ function getBookingFeatures($bookingId){
 
 //print_r(getBookingFeatures(10));
 
-function getBookingsForCalendar(){
+function getBookingsForCalendar($roomId){
     $db = connect('hotel.sqlite3');
 
     $query = $db->query(
         "SELECT r.RoomName, b.ArrivalDate, b.DepartureDate
         FROM Rooms r
-        JOIN Bookings b ON r.roomId = b.roomId;"
+        JOIN Bookings b ON r.roomId = b.roomId
+        WHERE r.roomId = :roomId"
     );
 
-    $results = $query->fetchAll();
+    $query->bindParam(':roomId', $roomId, PDO::PARAM_INT);
+    $query->execute();
+
+    $results = $query->fetchAll(PDO::FETCH_ASSOC);
 
     return $results;
 }
+
 
 ?>
 

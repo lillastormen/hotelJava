@@ -1,0 +1,7 @@
+.calendar {
+    background: var(--brown-sugar);
+    color: #fff;
+    width: 100%;
+    font-family: Oxygen;
+    table-layout: fixed;
+}
