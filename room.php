@@ -12,17 +12,20 @@ $room = getARoomById($roomId);
 <section class="heroSpan"><h2><?= $room["RoomName"] ?></h2></section>
 
 <section class="datesForm">
-    <form action>
+    <h3>Choose the dates for your stay: </h3>
+    <form action >
         <label for="arrivalDate">Arrival date: </label>
         <input type="date" id="arrivalDate" name="arrivalDate">
         <label for="departureDate">Departure date: </label>
-        <input type="date" id="departureDate" name="departureDate">
-        <input type="submit">
+        <input type="date" id="departureDate" name="departureDate"></br>
+        <div class="datesButton">
+            <input class="submitDatesButton" type="submit">
+        </div>
     </form>
 </section>
 
 <section class="calendarContainer">
-    <h3>Room calendar</h3>
+    <h3>Avaiability of the room: </h3>
     <div><?php require __DIR__ . '/calendar.php';?></div>
 </section>
 

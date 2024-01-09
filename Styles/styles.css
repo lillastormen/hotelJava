@@ -60,16 +60,6 @@ nav {
     border-radius: 45px;
 }
 
-/*.rooms img {
-    display: block;
-    height: 1100px;
-    width: 100%;
-    object-fit: cover;
-    object-position: 15% 85%;
-    margin-bottom: 15px;
-     border-radius: 45px; 
-}*/
-
 .rooms {
     text-align: center;
     background-color: var(--lion);

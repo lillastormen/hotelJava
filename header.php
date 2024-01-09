@@ -12,6 +12,7 @@ require __DIR__ . '/functions.php';
         <link rel="stylesheet" href="/Styles/mainPage.css">
         <link rel="stylesheet" href="/Styles/variables.css">
         <link rel="stylesheet" href="/Styles/fonts.css">
+        <link rel="stylesheet" href="/Styles/roomPage.css">
         <title>Sahaja Resort</title>
     </head>
 
