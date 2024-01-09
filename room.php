@@ -7,11 +7,14 @@ $room = getARoomById($roomId);
 
 ?>
 
-<section class="hero" style="background-image: url(/Assets/<?= $room["RoomType"] ?>.png);">  
-    <div class="gradient"></div>     
-    <span class="heroSpan"><?= $room["RoomName"] ?></span>
-</section>
+<section class="hero" style="background-image: url(/Assets/<?= $room["RoomType"] ?>.png);"></section>
+
+<section class="heroSpan"><h2><?= $room["RoomName"] ?></h2></section>
+
+<section class="datesForm"></section>
 
 <?php require __DIR__ . '/calendar.php';?>
+
+<section class="customerDataForm"></section>
 
 <?php require __DIR__ . '/footer.php';?>
