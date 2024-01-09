@@ -1,7 +1,24 @@
+.calendarContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .calendar {
-    background: var(--brown-sugar);
-    color: #fff;
-    width: 100%;
-    font-family: Oxygen;
+    background: var(--lion);
+    color: #000000;
+    width: 600px;
+    font-family: Cinzel;
     table-layout: fixed;
+    
+}
+
+.calendar tbody tr td.mask,.calendar tbody tr td.mask-end,.calendar tbody tr td.mask-start {
+    background: var(--bookings);
+}
+
+
+.calendar tbody tr td.today {
+    background: rgba(0, 0, 0, 0)
 }

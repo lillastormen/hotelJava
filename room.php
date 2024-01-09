@@ -21,7 +21,10 @@ $room = getARoomById($roomId);
     </form>
 </section>
 
-<?php require __DIR__ . '/calendar.php';?>
+<section class="calendarContainer">
+    <h3>Room calendar</h3>
+    <div><?php require __DIR__ . '/calendar.php';?></div>
+</section>
 
 <section class="addFeatures"></section>
 

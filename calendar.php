@@ -15,8 +15,11 @@ foreach($calendarBookings as $booking){
 }
 ?>
 
-<h3>Room calendar</h3>
-<?= $calendar->draw(date('Y-1-1'), ''); ?>
+<link rel="stylesheet" href="/Styles/calendar.css">
+
+<?= $calendar->draw(date('Y-1-1'), '');
+
+?>
 
 
         
