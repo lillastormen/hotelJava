@@ -187,6 +187,21 @@ function getBookingsForCalendar($roomId){
     return $results;
 }
 
+function getARoomById($roomId){
+    $db = connect('hotel.sqlite3');
+
+    $query = $db->prepare("SELECT * 
+    FROM Rooms  
+    WHERE RoomId = :roomId");
+    $query->bindParam(':roomId', $roomId, PDO::PARAM_STR);
+    $query->execute();
+
+    $results = $query->fetch(PDO::FETCH_ASSOC);
+
+    $db =null; 
+
+    return $results;
+}
 
 ?>
 

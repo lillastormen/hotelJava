@@ -16,17 +16,17 @@
     <h2>OUR ROOMS</h2>
     <div class="roomImageContainer">
         <div>
-            <a href="/room.php"><img class="budgetRoom" src="/Assets/budgetRoom3.png"></a>
+            <a href="/room.php?id=1"><img class="budgetRoom" src="/Assets/budgetRoom3.png"></a>
             <h3>PURNAMA</h3>
             <p>Welcome to the Purnama Budget Room, a cozy space designed for practical comfort. Enjoy a peaceful stay on Java Island without breaking the bank. This room offers all the essentials you need for a relaxing experience, making it an ideal choice for budget-conscious travelers.</p>
         </div>
         <div>
-            <a href="/room.php"><img class="standardRoom" src="/Assets/luxuryRoom1.png"></a>
+            <a href="/room.php?id=2"><img class="standardRoom" src="/Assets/luxuryRoom1.png"></a>
             <h3>SARI</h3>
             <p>Experience the charm of the Sari Standard Room, where comfort meets style. Named after the essence it embodies, this room on Java Island provides a warm and inviting atmosphere. With thoughtful touches and a touch of local flair, the Sari Room ensures a pleasant stay for both business and leisure travelers.</p>
         </div>
         <div>
-            <a href="/room.php"><img class="luxuryRoom" src="/Assets/standardRoom1.png"></a>
+            <a href="/room.php?id=3"><img class="luxuryRoom" src="/Assets/standardRoom1.png"></a>
             <h3>MEGAH</h3>
             <p>Indulge in luxury at its finest with the Mega Luxury Room. This spacious and elegant accommodation on Java Island is designed for those seeking an extra touch of opulence. Revel in the grandeur of your surroundings, as the Mega Room promises a truly luxurious experience for a memorable stay.</p>
         </div>

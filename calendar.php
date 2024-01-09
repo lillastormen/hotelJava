@@ -1,23 +1,22 @@
 <?php 
-require 'vendor/autoload.php';
-require __DIR__ . '/functions.php';
-require __DIR__ . '/databaseFunctions.php';
+require_once 'vendor/autoload.php';
+require_once __DIR__ . '/functions.php';
+require_once __DIR__ . '/databaseFunctions.php';
 
 use benhall14\phpCalendar\Calendar as Calendar;
 
-$calendarBookings = getBookingsForCalendar(1);
+$calendarBookings = getBookingsForCalendar($roomId);
 
 $calendar = new Calendar;
 $calendar->stylesheet();
 
-
 foreach($calendarBookings as $booking){
     $calendar->addEvent(date($booking['ArrivalDate']), date($booking['DepartureDate']), $booking['RoomName'], true);
 }
-
-echo $calendar->draw(date('Y-1-1'), ''); 
-
 ?>
+
+<h3>Room calendar</h3>
+<?= $calendar->draw(date('Y-1-1'), ''); ?>
 
 
         
