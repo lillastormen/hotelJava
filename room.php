@@ -9,7 +9,10 @@ $room = getARoomById($roomId);
 
 <section class="hero" style="background-image: url(/Assets/<?= $room["RoomType"] ?>.png);"></section>
 
-<section class="heroSpan"><h2><?= $room["RoomName"] ?></h2></section>
+<section class="heroSpan">
+    <h2><?= $room["RoomName"] ?></h2>
+    <p>Follow the steps below to secure your booking!</p>
+</section>
 
 <section class="datesForm">
     <h3>Choose the dates for your stay: </h3>
