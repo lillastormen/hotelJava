@@ -12,6 +12,7 @@ require __DIR__ . '/functions.php';
         <link rel="stylesheet" href="/Styles/mainPage.css">
         <link rel="stylesheet" href="/Styles/variables.css">
         <link rel="stylesheet" href="/Styles/fonts.css">
+        <link rel="stylesheet" href="/Styles/calendar.css">
         <title>Sahaja Resort</title>
     </head>
 
@@ -22,10 +23,9 @@ require __DIR__ . '/functions.php';
                     <a href="/index.php"><<img src="/Assets/logo1.png" alt="logo"></a>
                 </div>
                 <div class="menu">
-                    <a href="/rooms.php">Our Rooms</a>
+                    <a href="/room.php">Our Rooms</a>
                     <a href="/login.php">Log in</a>
                 </div>
             </nav>
         </header>
 
-<div class="container">

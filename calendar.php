@@ -1,4 +1,5 @@
-<?php require 'vendor/autoload.php';
+<?php 
+require 'vendor/autoload.php';
 require __DIR__ . '/functions.php';
 require __DIR__ . '/databaseFunctions.php';
 
@@ -17,3 +18,6 @@ foreach($calendarBookings as $booking){
 echo $calendar->draw(date('Y-1-1'), ''); 
 
 ?>
+
+
+        
