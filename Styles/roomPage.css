@@ -7,19 +7,41 @@
 }
 
 .datesButton {
-    padding-top: 40px;
+    padding-top: 60px;
 }
-.submitDatesButton {
+
+.submitDatesButton,
+.submitFeaturesButton {
     background-color: var(--navigation);
     padding: 10px 30px 10px 30px;
     font-size: 16px;
     font-family: 'Raleway';
 }
 
-.calendarContainer {
-    padding: 40px 0px 100px 0px;
-}
-
 .calendarContainer h3 {
     padding-bottom: 20px;
 }
+
+.datesForm h3,
+.addFeatures h3,
+.customerDataForm h3,
+.addFeatures h3 {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.addFeatures {
+    background-color: var(--cadet);
+    align-items: center;
+    display: flex;  
+    text-align: left;
+    flex-direction: column; 
+    font-family: 'Raleway';
+    font-size: 20px;
+    padding: 80px 0px 100px 0px;
+}
+
+.featuresButton {
+    padding-top: 35px;
+}
+

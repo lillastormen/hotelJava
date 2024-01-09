@@ -3,7 +3,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 60px 0px 100px 0px;
 }
+
 
 .calendar {
     background: var(--lion);
@@ -15,7 +17,6 @@
 .calendar tbody tr td.mask,.calendar tbody tr td.mask-end,.calendar tbody tr td.mask-start {
     background: var(--bookings);
 }
-
 
 .calendar tbody tr td.today {
     background: rgba(0, 0, 0, 0)
