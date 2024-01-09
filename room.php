@@ -11,10 +11,22 @@ $room = getARoomById($roomId);
 
 <section class="heroSpan"><h2><?= $room["RoomName"] ?></h2></section>
 
-<section class="datesForm"></section>
+<section class="datesForm">
+    <form action>
+        <label for="arrivalDate">Arrival date: </label>
+        <input type="date" id="arrivalDate" name="arrivalDate">
+        <label for="departureDate">Departure date: </label>
+        <input type="date" id="departureDate" name="departureDate">
+        <input type="submit">
+    </form>
+</section>
 
 <?php require __DIR__ . '/calendar.php';?>
 
+<section class="addFeatures"></section>
+
 <section class="customerDataForm"></section>
+
+<section class="bookingConfirmation"></section>
 
 <?php require __DIR__ . '/footer.php';?>
