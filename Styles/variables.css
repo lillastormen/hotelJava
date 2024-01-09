@@ -2,11 +2,11 @@
     --lemon-chiffon: #F9EFC9ff;
     --lemon-chiffon-transparent: rgba(249, 239, 201, 0.539);
     --lion: rgba(164, 135, 104, 0.877);
-    --brown-sugar: #A56D52ff;
+    --brown-sugar: rgb(132, 93, 62);
     --gunmetal: #1E2829ff;
-    --brunswick-green: #275347ff;
+    --brunswick-green: rgb(7, 26, 21);
     --cadet: #596A6F;
     --navigation: #0000003c;
     --bookings: #c23b22;
+    --heroRoom: rgb(20, 11, 5); 
 }
-

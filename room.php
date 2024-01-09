@@ -9,10 +9,14 @@ $room = getARoomById($roomId);
 
 <section class="hero" style="background-image: url(/Assets/<?= $room["RoomType"] ?>.png);"></section>
 
-<section class="heroSpan">
+<div class="gradientRoom"></div> 
+
+<section class="heroRoomPage lightFont">
     <h2><?= $room["RoomName"] ?></h2>
     <p>Follow the steps below to secure your booking!</p>
 </section>
+
+<div class="block"></div>
 
 <section class="datesForm">
     <h3>Choose the dates for your stay: </h3>
@@ -49,6 +53,13 @@ $room = getARoomById($roomId);
 
 <section class="customerDataForm">
     <h3>Enter your personal information to complete the booking:</h3>
+    <form name="myForm" action="/action_page.php" method="get">
+        <label for="fname">First name: </label>
+        <input type="text" id="fname" name="fname"><br><br>
+        <label for="lname">Last name: </label>
+        <input type="text" id="lname" name="lname"><br><br>
+        <input type="button" onclick="formSubmit()" value="Send form data!">
+    </form>
 </section>
 
 <section class="bookingConfirmation">
