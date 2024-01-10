@@ -5,6 +5,8 @@ require __DIR__ . '/databaseFunctions.php';
 $roomId = isset($_GET['id']) ? $_GET['id'] : '';
 $room = getARoomById($roomId);
 
+
+
 if(
     isset($_POST["fname"]) && 
     isset($_POST["lname"]) && 

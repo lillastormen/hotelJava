@@ -44,6 +44,13 @@ function changeRoomPrice($roomId, $price){
     return $roomPrice;
 }
 
+
+
+
+
+
+
+
 //function to check if dates of bookings are not overlaping before making a booking
 function checkRoomAvailability($roomId, $arrivalDate, $departureDate){
 
@@ -226,6 +233,18 @@ function getFeatures(){
     $query->execute();
     $result = $query->fetchAll();
     
+    return $result;
+}
+
+//function the get the room info
+function getRoomPrice(){
+
+    $db = connect('hotel.sqlite3');
+    
+    $query = $db->prepare("SELECT * FROM Rooms");
+    $query->execute();
+    $result = $query->fetchAll();
+
     return $result;
 }
 

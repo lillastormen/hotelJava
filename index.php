@@ -1,4 +1,10 @@
-<?php require __DIR__ . '/header.php';?>
+<?php 
+require __DIR__ . '/header.php';
+require __DIR__ . '/databaseFunctions.php';
+
+$prices = getRoomPrice();
+
+?>
 
 
 <section class="hero" style="background-image: url(/Assets/hotel2.png);">  
@@ -19,6 +25,7 @@
             <a href="/room.php?id=1"><img class="budgetRoom" src="/Assets/budget.png"></a>
             <h3>PURNAMA</h3>
             <p>Welcome to the Purnama Budget Room, a cozy space designed for practical comfort. Enjoy a peaceful stay on Java Island without breaking the bank. This room offers all the essentials you need for a relaxing experience, making it an ideal choice for budget-conscious travelers.</p>
+       
         </div>
         <div>
             <a href="/room.php?id=2"><img class="standardRoom" src="/Assets/standard.png"></a>
@@ -29,6 +36,11 @@
             <a href="/room.php?id=3"><img class="luxuryRoom" src="/Assets/luxury.png"></a>
             <h3>MEGAH</h3>
             <p>Indulge in luxury at its finest with the Megah Luxury Room. This spacious and elegant accommodation on Java Island is designed for those seeking an extra touch of opulence. Revel in the grandeur of your surroundings, as the Mega Room promises a truly luxurious experience for a memorable stay.</p>
+            <div>
+                <?php foreach ($prices as $price){
+                 echo $price["RoomPrice"];
+                } ?>
+            </div>
         </div>
     </div>
 </section>
