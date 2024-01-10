@@ -31,8 +31,7 @@ $rooms = getRooms();
                 <h3><?= $room["RoomName"] ?></h3>
             </div>
             <div>
-                <p><?=$room["RoomPrice"];?>$</p> 
-               
+                <h4><b><?=$room["RoomPrice"];?>$</b></h4>
             </div>
             <div>
                 <p><?=$room["RoomDescription"];?></p>
