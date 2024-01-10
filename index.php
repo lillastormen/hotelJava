@@ -6,12 +6,15 @@ $rooms = getRooms();
 
 ?>
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 
 <section class="hero" style="background-image: url(/Assets/hotel2.png);">  
     <div class="gradient"></div>     
     <span class="heroSpan">
-        <h1>Welcome to Sahaja Resort</h1>
-        <h3>Every detail is designed for your comfort, and every moment promises a sense of understated luxury</h3> 
+        <h1>Sahaja Resort</h1>
+        <span class="material-symbols-outlined">star star</span>
+        <h3>Place where every detail is designed for your comfort, and every moment promises a sense of understated luxury</h3>
     </span>
 </section>
 

@@ -2,6 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Inter:wght@200&family=Poppins:wght@100;800&family=Rajdhani:wght@300&family=Raleway:wght@100;200;300;400&display=swap');
 
+
 .lightFont {
     color:rgb(241, 234, 226)
 }
@@ -9,6 +10,7 @@
 h1 {
     font-size: 40px;
     font-family:'Cinzel';
+    margin: 10px;
 }
 
 h2 {
@@ -35,5 +37,6 @@ h5 {
 
 p, a {
     font-family:'Raleway';
+    font-size: 18px;
 }
 
