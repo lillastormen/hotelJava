@@ -24,7 +24,7 @@ require __DIR__ . '/functions.php';
                     <a href="/index.php"><<img src="/Assets/logo1.png" alt="logo"></a>
                 </div>
                 <div class="menu">
-                    <a href="/room.php">Our Rooms</a>
+                    <a href="#rooms">Our Rooms</a>
                     <a href="/login.php">Log in</a>
                 </div>
             </nav>

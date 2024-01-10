@@ -54,12 +54,12 @@ nav {
     width: 100%;
 }
 
-.rooms img {
+#rooms img {
     max-width: 100%;
     border-radius: 45px;
 }
 
-.rooms {
+#rooms {
     text-align: center;
     background-color: var(--lion);
     padding-bottom: 80px;

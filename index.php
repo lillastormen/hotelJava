@@ -17,7 +17,7 @@ $rooms = getRooms();
 
 
 
-<section class="rooms">
+<section id="rooms">
     <div class="block"></div>
     <h2>OUR ROOMS</h2>
     <div class="roomImageContainer">
@@ -46,6 +46,7 @@ $rooms = getRooms();
     <div class="block"></div>
     <h2>ONLINE BOOKING OFFER</h2>
     <h4>Stay longer than 5 days and unlock a 20% discount, making your retreat even more unforgettable experience.</h4>
+    <p>Cooming soon!</p>
 </section>
 
 <section class="features">

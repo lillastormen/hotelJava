@@ -27,7 +27,7 @@ if(
 <div class="gradientRoom"></div> 
 
 <section class="heroRoomPage">
-    <h2><?= $room["RoomName"] ?></h2>
+    <h2><?= $room["RoomName"]; ?></h2>
     <h4>Follow the steps below to secure your booking!</h4>
 </section>
 
