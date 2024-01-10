@@ -217,7 +217,17 @@ function getFeaturePrice($featureId){
     return $result['FeaturePrice'];
 }
 
-print_r(getFeaturePrice(2));
+//function to get the features
+function getFeatures(){
+
+    $db = connect('hotel.sqlite3');
+
+    $query = $db->prepare("SELECT * FROM features");
+    $query->execute();
+    $result = $query->fetchAll();
+    
+    return $result;
+}
 
 ?>
 

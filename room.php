@@ -4,9 +4,7 @@ require __DIR__ . '/databaseFunctions.php';
 
 $roomId = isset($_GET['id']) ? $_GET['id'] : '';
 $room = getARoomById($roomId);
-$feature = getBookingFeatures($roomId);
 
-print_r($feature);
 if(
     isset($_POST["fname"]) && 
     isset($_POST["lname"]) && 
@@ -15,13 +13,9 @@ if(
     isset($_POST["features"]) 
 ) {
    $booking = createBooking($_POST["fname"], $_POST["lname"], $_POST["arrivalDate"], $_POST["departureDate"], $roomId, $_POST["features"]);
-   print_r($booking);
-   if(!$booking){
-?>  
-
-<script>alert("Booking unsuccessful! Choose different dates and try again!");</script>
-
-<?php
+   if(!$booking){?>  
+        <script>alert("Booking unsuccessful! Choose different dates and try again!");</script>
+        <?php
     }
 }
 ?>
@@ -53,12 +47,20 @@ if(
 
     <section class="addFeatures">
         <h3>3. Add extra features to your reservation: </h3>
-            <input type="checkbox" id="breakfast" name="features[]" value="1"><div><?= $feature["FeatureInfo"] ?></div>
-            <label for="breakfast">Breakfast</label><br>
-            <input type="checkbox" id="swimmingpool" name="features[]" value="3">
-            <label for="swimmingpool">Swimmingpool</label><br>
-            <input type="checkbox" id="minibar" name="features[]" value="2">
-            <label for="minibar">Minibar</label><br><br>
+        <?php
+            $features = getFeatures();
+            foreach($features as $feature){?>
+             <div class="featureContainer">
+                <div class="featureCheckbox">
+                    <input type="checkbox" id="<?= $feature["FeatureType"]?>" name="features[]" value="<?= $feature["FeatureId"]?>">
+                </div>
+                <div class="featureInfo">
+                    <label for="<?= $feature["FeatureType"]?>"><?= $feature["FeatureType"]?></label>
+                    <span><?= $feature["FeaturePrice"] ?></span>
+                    <p>$</p>
+                </div>
+             </div>
+            <?php }?>
     </section>
 
     <section class="customerDataForm">

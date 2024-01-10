@@ -6,17 +6,15 @@
     font-size: 20px;
 }
 
-.datesButton {
-    padding-top: 60px;
-}
-
-.submitDatesButton,
-.submitFeaturesButton,
 .submitBookingButton{
     background-color: var(--navigation);
-    padding: 10px 30px 10px 30px;
+    padding: 15px 50px 15px 50px;
     font-size: 16px;
     font-family: 'Raleway';
+}
+
+.bookButton {
+    padding-top: 40px;
 }
 
 .calendarContainer h3 {
@@ -34,16 +32,31 @@
 .addFeatures {
     background-color: var(--cadet);
     align-items: center;
-    display: flex;  
-    text-align: left;
-    flex-direction: column; 
+    display: grid;  
     font-family: 'Raleway';
     font-size: 20px;
     padding: 80px 0px 100px 0px;
 }
 
-.featuresButton {
-    padding-top: 35px;
+.featureContainer {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    
+;}
+
+.featureCheckbox {
+    margin-right: 10px;
+}
+
+.featureInfo {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.featureInfo label {
+    margin-right: 5px;
 }
 
 .heroRoomPage {
@@ -67,7 +80,17 @@
 
 .customerDataForm {
     text-align: center;
-  
     padding: 80px 0px 100px 0px;
+    font-family: 'Raleway';
+}
 
+.customerDataForm input[type=text],
+.datesForm input[type=date]  {
+    width: 200px;
+    height: 25px;
+}
+
+.addFeatures input[type=checkbox]{
+    width: 17px;
+    height: 17px;
 }
