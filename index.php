@@ -2,7 +2,7 @@
 require __DIR__ . '/header.php';
 require __DIR__ . '/databaseFunctions.php';
 
-$prices = getRoomPrice();
+$rooms = getRooms();
 
 ?>
 
@@ -11,7 +11,7 @@ $prices = getRoomPrice();
     <div class="gradient"></div>     
     <span class="heroSpan">
         <h1>Welcome to Sahaja Resort</h1>
-        <h3>Every detail is designed for your comfort, and every moment promises a sense of understated luxury and repose</h3> 
+        <h3>Every detail is designed for your comfort, and every moment promises a sense of understated luxury</h3> 
     </span>
 </section>
 
@@ -21,27 +21,22 @@ $prices = getRoomPrice();
     <div class="block"></div>
     <h2>OUR ROOMS</h2>
     <div class="roomImageContainer">
-        <div>
-            <a href="/room.php?id=1"><img class="budgetRoom" src="/Assets/budget.png"></a>
-            <h3>PURNAMA</h3>
-            <p>Welcome to the Purnama Budget Room, a cozy space designed for practical comfort. Enjoy a peaceful stay on Java Island without breaking the bank. This room offers all the essentials you need for a relaxing experience, making it an ideal choice for budget-conscious travelers.</p>
-       
-        </div>
-        <div>
-            <a href="/room.php?id=2"><img class="standardRoom" src="/Assets/standard.png"></a>
-            <h3>SARI</h3>
-            <p>Experience the charm of the Sari Standard Room, where comfort meets style. Named after the essence it embodies, this room on Java Island provides a warm and inviting atmosphere. With thoughtful touches and a touch of local flair, the Sari Room ensures a pleasant stay for both business and leisure travelers.</p>
-        </div>
-        <div>
-            <a href="/room.php?id=3"><img class="luxuryRoom" src="/Assets/luxury.png"></a>
-            <h3>MEGAH</h3>
-            <p>Indulge in luxury at its finest with the Megah Luxury Room. This spacious and elegant accommodation on Java Island is designed for those seeking an extra touch of opulence. Revel in the grandeur of your surroundings, as the Mega Room promises a truly luxurious experience for a memorable stay.</p>
-            <div>
-                <?php foreach ($prices as $price){
-                 echo $price["RoomPrice"];
-                } ?>
+    <?php
+        foreach ($rooms as $room){?>
+            <div class="roomImage">
+                <a href="/room.php?id=1"><img src="/Assets/<?= $room["RoomType"] ?>.png"></a>
+            </div>
+            <div class="roomName">
+                <h3><?= $room["RoomName"] ?></h3>
+            </div>
+            <div class="roomDescriptiom">
+                <p><?=$room["RoomDescription"];?></p>
+            </div>
+            <div class="roomPrice">
+                <p><?=$room["RoomPrice"];?></p>
             </div>
         </div>
+        <?php } ?>
     </div>
 </section>
 

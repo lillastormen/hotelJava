@@ -237,7 +237,7 @@ function getFeatures(){
 }
 
 //function the get the room info
-function getRoomPrice(){
+function getRooms(){
 
     $db = connect('hotel.sqlite3');
     
