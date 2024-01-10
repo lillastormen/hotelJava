@@ -4,8 +4,9 @@ require __DIR__ . '/databaseFunctions.php';
 
 $roomId = isset($_GET['id']) ? $_GET['id'] : '';
 $room = getARoomById($roomId);
-$errorMessage = "";
+$feature = getBookingFeatures($roomId);
 
+print_r($feature);
 if(
     isset($_POST["fname"]) && 
     isset($_POST["lname"]) && 
@@ -27,7 +28,6 @@ if(
 
 
 <section class="hero" style="background-image: url(/Assets/<?= $room["RoomType"] ?>.png);"></section>
-
 <div class="gradientRoom"></div> 
 
 <section class="heroRoomPage">
@@ -35,7 +35,7 @@ if(
     <h4>Follow the steps below to secure your booking!</h4>
 </section>
 
-<?= $errorMessage?>
+
 
 <form name="mainForm" action="/room.php?id=<?= $roomId?>" method="POST">
     <section class="datesForm">
@@ -53,7 +53,7 @@ if(
 
     <section class="addFeatures">
         <h3>3. Add extra features to your reservation: </h3>
-            <input type="checkbox" id="breakfast" name="features[]" value="1">
+            <input type="checkbox" id="breakfast" name="features[]" value="1"><div><?= $feature["FeatureInfo"] ?></div>
             <label for="breakfast">Breakfast</label><br>
             <input type="checkbox" id="swimmingpool" name="features[]" value="3">
             <label for="swimmingpool">Swimmingpool</label><br>

@@ -28,7 +28,7 @@
         <div>
             <a href="/room.php?id=3"><img class="luxuryRoom" src="/Assets/luxury.png"></a>
             <h3>MEGAH</h3>
-            <p>Indulge in luxury at its finest with the Mega Luxury Room. This spacious and elegant accommodation on Java Island is designed for those seeking an extra touch of opulence. Revel in the grandeur of your surroundings, as the Mega Room promises a truly luxurious experience for a memorable stay.</p>
+            <p>Indulge in luxury at its finest with the Megah Luxury Room. This spacious and elegant accommodation on Java Island is designed for those seeking an extra touch of opulence. Revel in the grandeur of your surroundings, as the Mega Room promises a truly luxurious experience for a memorable stay.</p>
         </div>
     </div>
 </section>

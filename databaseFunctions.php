@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
  
 //functipon to get the name of the hotel
 function getHotel(){
@@ -80,8 +83,8 @@ function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate,
                 // .= glues together the left and the right string
             }
     
-            //$query = $db->query(
-            //    "INSERT INTO BookedFeatures (BookingId, FeatureId) VALUES ". substr($bookedFeaturesString, 0, -1));
+            $query = $db->query(
+                "INSERT INTO BookedFeatures (BookingId, FeatureId) VALUES ". substr($bookedFeaturesString, 0, -1));
         }
     
         return getBooking($bookingId);
@@ -183,6 +186,7 @@ function getARoomById($roomId){
     $query = $db->prepare("SELECT * 
     FROM Rooms  
     WHERE RoomId = :roomId");
+
     $query->bindParam(':roomId', $roomId, PDO::PARAM_STR);
     $query->execute();
 
@@ -192,6 +196,28 @@ function getARoomById($roomId){
 
     return $results;
 }
+
+
+//function to get price of a single feature
+function getFeaturePrice($featureId){
+    $db = connect('hotel.sqlite3');
+
+    $query = $db->prepare("SELECT FeaturePrice
+    FROM Features
+    WHERE featureId = :featureId");
+
+    $query->bindParam(':featureId', $featureId, PDO::PARAM_INT);
+
+    $query->execute();
+
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    $db =null;
+
+    return $result['FeaturePrice'];
+}
+
+print_r(getFeaturePrice(2));
 
 ?>
 
