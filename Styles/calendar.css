@@ -19,7 +19,7 @@
 }
 
 .calendar tbody tr td.today {
-    background: rgba(0, 0, 0, 0)
+    display: none;
 }
 
 .calendar-title th {

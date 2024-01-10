@@ -2,7 +2,6 @@
     box-sizing: border-box;
 }
 
-
 header {
     width: 100%;
     position:fixed;
@@ -100,7 +99,6 @@ nav {
     padding-bottom: 40px;
 }
 
-
 .features{
     text-align: center;
     padding-bottom: 100px;
@@ -156,3 +154,11 @@ a {
     'GRAD' 0,
     'opsz' 24
   }
+
+  .newsletter input[type=submit]{
+    background-color: var(--navigation);
+    padding: 9px 20px 10px 20px;
+    font-size: 16px;
+    font-family: 'Raleway';
+    color: var(--lightFont);
+}
