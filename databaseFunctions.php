@@ -45,30 +45,20 @@ function changeRoomPrice($roomId, $price){
 function checkRoomAvailability($roomId, $arrivalDate, $departureDate){
 
     $db = connect('hotel.sqlite3');
-    $query = $db->query(
-        "SELECT RoomId
-        FROM Bookings
-        WHERE RoomId = :roomId
-        AND 
-        (
-	        (DepartureDate > :arrivalDate AND DepartureDate < :departureDate)
-	        OR
-			(ArrivalDate > :arrivalDate AND ArrivalDate < :departureDate)
-		)"
-    );
-    
-    $query->bindParam(':roomId', $roomId, PDO::PARAM_INT);
-    $query->bindParam(':arrivalDate', $arrivalDate, PDO::PARAM_STR);
-    $query->bindParam(':departureDate', $departureDate, PDO::PARAM_STR);
-
-
-    $result = $query->fetch();
-
+    $query = $db->query("SELECT RoomId
+    FROM Bookings
+    WHERE RoomId = $roomId
+    AND (
+        (ArrivalDate >= '$arrivalDate' AND ArrivalDate <= '$departureDate')
+    OR
+        (DepartureDate >= '$arrivalDate' AND DepartureDate <= '$departureDate')
+    OR
+        (ArrivalDate <= '$arrivalDate' AND DepartureDate >= '$departureDate')
+    )");
+ 
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
     return empty($result);
 }
-
-
-
 
 
 //function to create a booking
@@ -90,13 +80,13 @@ function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate,
                 // .= glues together the left and the right string
             }
     
-            $query = $db->query(
-                "INSERT INTO BookedFeatures (BookingId, FeatureId) VALUES ". substr($bookedFeaturesString, 0, -1));
+            //$query = $db->query(
+            //    "INSERT INTO BookedFeatures (BookingId, FeatureId) VALUES ". substr($bookedFeaturesString, 0, -1));
         }
     
         return getBooking($bookingId);
     } else {
-        return "Room unavailable";
+        return false;
     }
    
 }
