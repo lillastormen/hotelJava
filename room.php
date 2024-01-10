@@ -35,7 +35,7 @@ if(
 
 <form name="mainForm" action="/room.php?id=<?= $roomId?>" method="POST">
     <section class="datesForm">
-        <h3>1. Choose the dates for your stay: </h3>
+        <h3>1. Choose the dates of your stay: </h3>
             <label for="arrivalDate">Arrival date: </label>
             <input type="date" id="arrivalDate" name="arrivalDate" min="2024-01-01" max="2024-01-31" required>
             <label for="departureDate">Departure date: </label>
@@ -43,7 +43,7 @@ if(
     </section>
 
     <section class="calendarContainer">
-        <h3>2. Take a look on the calendar too see if the room is avaiable: </h3>
+        <h3>2. Take a look on the calendar too make sure that the room is avaiable: </h3>
         <div><?php require __DIR__ . '/calendar.php';?></div>
     </section>
 
@@ -65,7 +65,7 @@ if(
     </section>
 
     <section class="customerDataForm">
-        <h3>4. Enter your personal information to complete the booking:</h3>
+        <h3>4. Enter your personal information to complete the booking: </h3>
             <label for="fname">First name: </label>
             <input type="text" id="fname" name="fname"required><br><br>
             <label for="lname">Last name: </label>
