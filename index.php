@@ -25,7 +25,7 @@ $rooms = getRooms();
         foreach ($rooms as $room){?>
         <div>
             <div>
-                <a href="/room.php?id=1"><img src="/Assets/<?= $room["RoomType"] ?>.png"></a>
+                <a href="/room.php?id=<?= $room["RoomId"] ?>"><img src="/Assets/<?= $room["RoomType"] ?>.png"></a>
             </div>
             <div>
                 <h3><?= $room["RoomName"] ?></h3>

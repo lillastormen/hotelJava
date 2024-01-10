@@ -5,8 +5,6 @@ require __DIR__ . '/databaseFunctions.php';
 $roomId = isset($_GET['id']) ? $_GET['id'] : '';
 $room = getARoomById($roomId);
 
-
-
 if(
     isset($_POST["fname"]) && 
     isset($_POST["lname"]) && 
@@ -23,8 +21,8 @@ if(
 ?>
 
 
-<section class="hero" style="background-image: url(/Assets/<?= $room["RoomType"] ?>.png);"></section>
-<div class="gradientRoom"></div> 
+<section class="hero" style="background-image: url(/Assets/<?= $room["RoomType"] ?>.png);"><div class="gradientRoom"></div> </section>
+
 
 <section class="heroRoomPage">
     <h2><?= $room["RoomName"]; ?></h2>
@@ -33,7 +31,7 @@ if(
 
 
 
-<form name="mainForm" action="/room.php?id=<?= $roomId?>" method="POST">
+<form name="mainForm" action="/confirmAndPay.php?id=<?= $roomId?>" method="POST">
     <section class="datesForm">
         <h3>1. Choose the dates of your stay: </h3>
             <label for="arrivalDate">Arrival date: </label>

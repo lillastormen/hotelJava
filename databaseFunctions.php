@@ -45,12 +45,6 @@ function changeRoomPrice($roomId, $price){
 }
 
 
-
-
-
-
-
-
 //function to check if dates of bookings are not overlaping before making a booking
 function checkRoomAvailability($roomId, $arrivalDate, $departureDate){
 
@@ -58,6 +52,7 @@ function checkRoomAvailability($roomId, $arrivalDate, $departureDate){
     $query = $db->query("SELECT RoomId
     FROM Bookings
     WHERE RoomId = $roomId
+    AND Paid = true
     AND (
         (ArrivalDate >= '$arrivalDate' AND ArrivalDate <= '$departureDate')
     OR
@@ -93,17 +88,33 @@ function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate,
             $query = $db->query(
                 "INSERT INTO BookedFeatures (BookingId, FeatureId) VALUES ". substr($bookedFeaturesString, 0, -1));
         }
-    
         return getBooking($bookingId);
     } else {
         return false;
+    }   
+}
+
+function payForBooking($bookingId, $transferCode, $totalCost){
+    if(useTransferCode($transferCode, $totalCost)){
+        $db = connect('hotel.sqlite3');
+        $query = $db->query(
+            "UPDATE Bookings 
+                SET 
+                    Paid = true,
+                    TransferCode = '$transferCode',
+                    TotalCost = '$totalCost'
+                WHERE 
+                    bookingId = $bookingId");
+            return true;
+    } else {
+        return false;
     }
-   
 }
 
 //creating a function for getting the booking info
 function getBooking($bookingId){
     return json_encode([
+        "bookingId" => $bookingId,
         ...getHotel(),
         ...calculateTotalCost($bookingId),
         ...getBookingFeatures($bookingId)
@@ -115,6 +126,7 @@ function getBooking($bookingId){
 
 //function to get the total amount of days, cost of the room, cost of the features and the total cost of all of these
 function calculateTotalCost ($bookingId){
+    
     $db = connect('hotel.sqlite3');
     
     $query = $db->query(
@@ -123,12 +135,13 @@ function calculateTotalCost ($bookingId){
         SUM(features.featurePrice * (julianday(bookings.departureDate) - julianday(bookings.arrivalDate))) AS featureCost
         FROM Rooms, Features
         JOIN Bookings ON Rooms.RoomId = Bookings.RoomId
-        JOIN BookedFeatures ON Features.FeatureId = BookedFeatures.Id");
+        JOIN BookedFeatures ON Features.FeatureId = BookedFeatures.Id
+        WHERE Bookings.BookingId = $bookingId");
         
     $result = $query->fetch();
 
-    $roomCost = $result['roomCost'];
-    $featureCost = $result['featureCost'];
+    $roomCost = ($result['roomCost']) ? $result['roomCost'] : 0;
+    $featureCost = ($result['featureCost']) ? $result['featureCost'] : 0;
 
     $totalCost = $roomCost + $featureCost;
 
@@ -176,7 +189,7 @@ function getBookingsForCalendar($roomId){
         "SELECT r.RoomName, b.ArrivalDate, b.DepartureDate
         FROM Rooms r
         JOIN Bookings b ON r.roomId = b.roomId
-        WHERE r.roomId = :roomId"
+        WHERE r.roomId = :roomId AND b.Paid = true"
     );
 
     $query->bindParam(':roomId', $roomId, PDO::PARAM_INT);
