@@ -23,18 +23,21 @@ $rooms = getRooms();
     <div class="roomImageContainer">
     <?php
         foreach ($rooms as $room){?>
-            <div class="roomImage">
+        <div>
+            <div>
                 <a href="/room.php?id=1"><img src="/Assets/<?= $room["RoomType"] ?>.png"></a>
             </div>
-            <div class="roomName">
+            <div>
                 <h3><?= $room["RoomName"] ?></h3>
             </div>
-            <div class="roomDescriptiom">
+            <div>
+                <p><?=$room["RoomPrice"];?>$</p> 
+               
+            </div>
+            <div>
                 <p><?=$room["RoomDescription"];?></p>
             </div>
-            <div class="roomPrice">
-                <p><?=$room["RoomPrice"];?></p>
-            </div>
+           
         </div>
         <?php } ?>
     </div>

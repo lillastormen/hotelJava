@@ -58,8 +58,7 @@ if(
                 </div>
                 <div class="featureInfo">
                     <label for="<?= $feature["FeatureType"]?>"><?= $feature["FeatureType"]?></label>
-                    <span><?= $feature["FeaturePrice"] ?></span>
-                    <p>$</p>
+                    <span><?= $feature["FeaturePrice"] ?>$</span>
                 </div>
              </div>
             <?php }?>
