@@ -160,8 +160,6 @@ a {
     justify-content: space-between;
     text-align: center;
     background-color: var(--gunmetal);
-    position: absolute;
-    bottom: 0px;
 }
 
 .submitContainer {
