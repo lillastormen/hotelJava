@@ -2,6 +2,8 @@
     box-sizing: border-box;
 }
 
+
+
 header {
     width: 100%;
     position:fixed;
@@ -22,6 +24,41 @@ nav {
     align-items: center;
     width: 100%;
     padding: 10px;
+}
+
+.container {
+    margin: 0px;
+}
+
+.hero {
+    display: flex;
+    justify-content:center;
+    align-items: flex-end;
+}   
+
+.roomImageContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 10px;
+}
+
+.roomImageContainer div {
+    text-align: center;
+}
+
+.deal {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.featureImageContainer {
+    display: flex;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
 }
 
 .hero {
