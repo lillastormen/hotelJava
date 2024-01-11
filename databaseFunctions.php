@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
- 
-//functipon to get the name of the hotel
+// Function to get the name of the hotel
 function getHotel(){
 
     $db = connect('hotel.sqlite3');
@@ -22,7 +21,7 @@ function getHotel(){
 }
 
 
-//function to get a booking ID
+// Function to get a booking ID
 function getBookingById($bookingId){
     
     $db = connect('hotel.sqlite3');
@@ -33,8 +32,7 @@ function getBookingById($bookingId){
 }
 
 
-
-//function to change the price of the room
+// Function to change the price of the room
 function changeRoomPrice($roomId, $price){
     
     $db = connect('hotel.sqlite3');
@@ -45,7 +43,7 @@ function changeRoomPrice($roomId, $price){
 }
 
 
-//function to check if dates of bookings are not overlaping before making a booking
+// Function to check if dates of bookings are not overlaping before making a booking
 function checkRoomAvailability($roomId, $arrivalDate, $departureDate){
 
     $db = connect('hotel.sqlite3');
@@ -66,7 +64,7 @@ function checkRoomAvailability($roomId, $arrivalDate, $departureDate){
 }
 
 
-//function to create a booking
+// Function to create a booking
 function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate, $roomId, $featuresIdArray){ 
 
     if(checkRoomAvailability($roomId, $arrivalDate, $departureDate)){
@@ -95,8 +93,8 @@ function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate,
 }
 
 function payForBooking($bookingId, $transferCode, $totalCost){
-    // function that uses the transfer code at the bank, returns false if the transfer code is invalid
-    // find this function in functions.php
+    // Function that uses the transfer code at the bank, returns false if the transfer code is invalid
+    // This function is included in functions.php
     if(useTransferCode($transferCode, $totalCost)){ 
         $db = connect('hotel.sqlite3');
         $query = $db->query(
@@ -113,7 +111,7 @@ function payForBooking($bookingId, $transferCode, $totalCost){
     }
 }
 
-//creating a function for getting the booking info
+// Function for getting the booking info
 function getBooking($bookingId){
     return json_encode([
         "bookingId" => $bookingId,
@@ -126,7 +124,7 @@ function getBooking($bookingId){
 //print_r(createBooking('Mary', 'Jane', '2024-01-01', '2024-01-05', 1, [1,2]));
 //print_r(getBooking(10));
 
-//function to get the total amount of days, cost of the room, cost of the features and the total cost of all of these
+// Function to get the total amount of days, cost of the room, cost of the features and the total cost of all of these
 function calculateTotalCost ($bookingId){
     
     $db = connect('hotel.sqlite3');
@@ -156,6 +154,7 @@ function calculateTotalCost ($bookingId){
 
 //print_r(calculateTotalCost(1));
 
+// Function to fetch the booked features
 function getBookingFeatures($bookingId){
     $db = connect('hotel.sqlite3');
 
@@ -184,6 +183,7 @@ function getBookingFeatures($bookingId){
 
 //print_r(getBookingFeatures(10));
 
+
 function getBookingsForCalendar($roomId){
     $db = connect('hotel.sqlite3');
 
@@ -201,6 +201,7 @@ function getBookingsForCalendar($roomId){
 
     return $results;
 }
+
 
 function getARoomById($roomId){
     $db = connect('hotel.sqlite3');
@@ -220,7 +221,7 @@ function getARoomById($roomId){
 }
 
 
-//function to get price of a single feature
+//f Function to get price of a single feature
 function getFeaturePrice($featureId){
     $db = connect('hotel.sqlite3');
 
@@ -239,7 +240,7 @@ function getFeaturePrice($featureId){
     return $result['FeaturePrice'];
 }
 
-//function to get the features
+// Function to get the features
 function getFeatures(){
 
     $db = connect('hotel.sqlite3');
@@ -251,7 +252,7 @@ function getFeatures(){
     return $result;
 }
 
-//function the get the room info
+// Function the get the room info
 function getRooms(){
 
     $db = connect('hotel.sqlite3');

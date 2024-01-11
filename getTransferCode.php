@@ -3,6 +3,8 @@ declare(strict_types=1);
 require_once 'vendor/autoload.php';
 use GuzzleHttp\Client;
 
+
+// Help-function to get the transfer code
 function getTransferCode(){
 
     $client = new GuzzleHttp\Client([

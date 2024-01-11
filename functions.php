@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 use GuzzleHttp\Client;
@@ -55,9 +56,9 @@ function isValidUuid(string $uuid): bool
 }
 
 function useTransferCode($transferCode, $totalCOST){
-    //Check if it is a valid uuid
+    // Check if it is a valid uuid
     if(isValidUuid($transferCode)){
-        //Check with the bank if the transfer code is usable
+        // Check with the bank if the transfer code is usable
         $client = new GuzzleHttp\Client([
             'base_uri' => 'https://www.yrgopelag.se/centralbank/']);
         $response = $client->request('POST', 'transferCode', [
@@ -67,9 +68,9 @@ function useTransferCode($transferCode, $totalCOST){
             ]
         ]);
         
-        //yyyy...???
+        // yyyy...??? idk how but it works
         $responseDecoded = json_decode($response->getBody()->getContents());
-        //If it is a success, then use the transfer code
+        // If it is a success, then use the transfer code
         if($response->getStatusCode() == 200 && !isset($responseDecoded->error)){
             $depositRequest = $client->request('POST', 'deposit', [
                 'form_params' => [
@@ -77,14 +78,14 @@ function useTransferCode($transferCode, $totalCOST){
                     'user' => 'KarolinaL',
                 ]
             ]);
-            // if the deposit was a success, we return true and can proceed with the booking
+            // If the deposit was a success, we return true and can proceed with the booking
             if($depositRequest->getStatusCode() == 200){
                 return true;
             }
         } else {
             return false;
         }
-        //If for any reasen there was an error, return false and stop the registration
+        // If here was any error, return false and stop the registration
     } return false;
 }
 

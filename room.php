@@ -4,20 +4,17 @@ require __DIR__ . '/databaseFunctions.php';
 
 $roomId = isset($_GET['id']) ? $_GET['id'] : '';
 $room = getARoomById($roomId);
-
 ?>
 
 
 <section class="hero" style="background-image: url(/Assets/<?= $room["RoomType"] ?>.png);"><div class="gradientRoom"></div> </section>
-
 
 <section class="heroRoomPage">
     <h2><?= $room["RoomName"]; ?></h2>
     <h4>Follow the steps below to secure your booking!</h4>
 </section>
 
-
-<!-- booking from goes to confirmAndPay.php -->
+<!-- Booking form - goes to confirmAndPay.php -->
 <form name="mainForm" action="/confirmAndPay.php?id=<?= $roomId?>" method="POST">
     <section class="datesForm">
         <h3>1. Choose the dates of your stay: </h3>
@@ -60,9 +57,5 @@ $room = getARoomById($roomId);
             </div>
     </section>
 </form>
-
-<section class="bookingConfirmation">
-
-</section>
 
 <?php require __DIR__ . '/footer.php';?>

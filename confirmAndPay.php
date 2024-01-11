@@ -1,4 +1,5 @@
 <?php 
+
 require __DIR__ . '/header.php';
 require __DIR__ . '/databaseFunctions.php';
 
@@ -35,9 +36,9 @@ if (
     isset($_POST["totalCost"]) && 
     isset($_POST["bookingId"]) 
 ) {
-    $bookingPayed = payForBooking($_POST["bookingId"], $_POST["transferCode"], $_POST["totalCost"]);
+    $bookingPaid = payForBooking($_POST["bookingId"], $_POST["transferCode"], $_POST["totalCost"]);
     
-    if(!$bookingPayed){?>
+    if(!$bookingPaid){?>
         <script>alert("Invalid transfer code, please try again"); history.back();</script>
     <?php } else { 
         $bookingSuccessfull = true;
@@ -65,6 +66,7 @@ if($bookingSuccessfull) { ?>
         <input type="submit" value="Confirm and Pay" />
     </form>
 </section>
+
 <?php
 }
 require __DIR__ . '/footer.php'; ?>
