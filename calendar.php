@@ -18,7 +18,7 @@ foreach($calendarBookings as $booking){
 }
 ?>
 
-<link rel="stylesheet" href="/Styles/calendar.css">
+<link rel="stylesheet" href="Styles/calendar.css">
 
 <?= $calendar->draw(date('Y-1-1'), '');
 

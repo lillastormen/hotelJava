@@ -20,6 +20,21 @@ function getHotel(){
     ];
 }
 
+function getBookingDates($bookingId){
+
+    $db = connect('hotel.sqlite3');
+    $query = $db->query("SELECT DepartureDate, ArrivalDate FROM Bookings WHERE BookingId = ". $bookingId);
+    
+    $result = $query->fetch(); 
+    $arrivalDate = $result['DepartureDate'];
+    $departureDate = $result['ArrivalDate'];
+
+    return [
+        "arrival_date" => $arrivalDate,
+        "departure_date" => $departureDate,
+    ];
+}
+
 
 // Function to get a booking ID
 function getBookingById($bookingId){
@@ -30,6 +45,8 @@ function getBookingById($bookingId){
     $booking = $query->fetch(); 
     return $booking;
 }
+
+//print_r(getBookingById(4));
 
 
 // Function to change the price of the room
@@ -116,10 +133,37 @@ function getBooking($bookingId){
     return json_encode([
         "bookingId" => $bookingId,
         ...getHotel(),
+        ...getBookingDates($bookingId),
         ...calculateTotalCost($bookingId),
         ...getBookingFeatures($bookingId)
     ]);  
 }
+
+/* function getBooking($bookingId)
+{
+    $bookingDetails = getBookingById($bookingId, ['GuestName', 'GuestSurname', 'ArrivalDate', 'DepartureDate']);
+    $totalCostDetails = calculateTotalCost($bookingId);
+    $bookingFeatures = getBookingFeatures($bookingId);
+
+    $bookingData = [
+        "bookingId" => $bookingId,
+        "hotel" => getHotel(),
+        "guestDetails" => [
+            "guestName" => $bookingDetails['GuestName'],
+            "guestSurname" => $bookingDetails['GuestSurname'],
+            "arrivalDate" => $bookingDetails['ArrivalDate'],
+            "departureDate" => $bookingDetails['DepartureDate']
+        ],
+        "totalCost" => [
+            "roomCost" => $totalCostDetails['roomCost'],
+            "featureCost" => $totalCostDetails['featureCost'],
+            "totalCost" => $totalCostDetails['totalCost']
+        ],
+        "bookingFeatures" => $bookingFeatures
+    ];
+
+    return json_encode($bookingData);
+}*/
 
 //print_r(createBooking('Mary', 'Jane', '2024-01-01', '2024-01-05', 1, [1,2]));
 //print_r(getBooking(10));
@@ -142,6 +186,12 @@ function calculateTotalCost ($bookingId){
 
     $roomCost = ($result['roomCost']) ? $result['roomCost'] : 0;
     $featureCost = ($result['featureCost']) ? $result['featureCost'] : 0;
+    // Adding the discount
+    $stayDuration = $result['days'];
+
+    if ($stayDuration >= 5){
+        $roomCost -= $result['roomCost'] / $stayDuration;
+    }
 
     $totalCost = $roomCost + $featureCost;
 

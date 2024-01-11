@@ -7,7 +7,7 @@ $room = getARoomById($roomId);
 ?>
 
 
-<section class="hero" style="background-image: url(/Assets/<?= $room["RoomType"] ?>.png);"><div class="gradientRoom"></div> </section>
+<section class="hero" style="background-image: url(Assets/<?= $room["RoomType"] ?>.png);"><div class="gradientRoom"></div> </section>
 
 <section class="heroRoomPage">
     <h2><?= $room["RoomName"]; ?></h2>
@@ -15,7 +15,7 @@ $room = getARoomById($roomId);
 </section>
 
 <!-- Booking form - goes to confirmAndPay.php -->
-<form name="mainForm" action="/confirmAndPay.php?id=<?= $roomId?>" method="POST">
+<form name="mainForm" action="confirmAndPay.php?id=<?= $roomId?>" method="POST">
     <section class="datesForm">
         <h3>1. Choose the dates of your stay: </h3>
             <label for="arrivalDate">Arrival date: </label>
