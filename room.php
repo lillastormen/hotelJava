@@ -25,7 +25,7 @@ $room = getARoomById($roomId);
     </section>
 
     <section class="calendarContainer">
-        <h3>2. Take a look on the calendar too make sure that the room is avaiable: </h3>
+        <h3>2. Take a look at the calendar to make sure that the room is avaiable: </h3>
         <div><?php require __DIR__ . '/calendar.php';?></div>
     </section>
 
@@ -47,7 +47,7 @@ $room = getARoomById($roomId);
     </section>
 
     <section class="customerDataForm">
-        <h3>4. Enter your personal information to complete the booking: </h3>
+        <h3>4. Enter your credentials to complete the booking: </h3>
             <label for="fname">First name: </label>
             <input type="text" id="fname" name="fname"required><br><br>
             <label for="lname">Last name: </label>
