@@ -20,8 +20,6 @@ Place where every detail is designed for visitors' comfort, and every moment pro
 [MIT]
 
 
-[![logo-1.png](https://i.postimg.cc/hGwCxm5G/logo-1.png)](https://postimg.cc/PLWznChG)
-
 ## Color Reference
 
 | Color             | Hex                                                                |
