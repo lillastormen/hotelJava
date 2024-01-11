@@ -1,0 +1,50 @@
+CREATE TABLE BookedFeatures (
+Id INTEGER NOT NULL,
+BookingId INTEGER,
+FeatureId INTEGER,
+FOREIGN KEY (BookingId) REFERENCES Bookings(BookingId),
+FOREIGN KEY (FeatureId) REFERENCES Features(FeatureId),
+PRIMARY KEY (Id)
+);
+
+CREATE TABLE Bookings (
+BookingId INTEGER NOT NULL,
+GuestName VARCHAR,
+GuestSurname VARCHAR,
+ArrivalDate DATE,
+DepartureDate DATE, RoomId INTEGER 
+REFERENCES Rooms(RoomId), TransferCode VARCHAR, Paid BOOLEAN default false, TotalCost INTEGER default 0,
+PRIMARY KEY (BookingId)
+);
+
+CREATE TABLE Features (
+FeatureId INTEGER NOT NULL,
+FeatureType VARCHAR,
+FeaturePrice INTEGER,
+PRIMARY KEY (FeatureId)
+);
+
+CREATE TABLE Hotel (
+Id INTEGER NOT NULL,
+Name VARCHAR,
+Island VARCHAR,
+Stars INTEGER,
+PRIMARY KEY (Id)
+);
+
+CREATE TABLE RoomFeatures (
+Id INTEGER NOT NULL,
+RoomId INTEGER,
+FeatureId INTEGER,
+FOREIGN KEY (RoomId) REFERENCES Rooms(RoomId),
+FOREIGN KEY (FeatureId) REFERENCES Features(FeatureId),
+PRIMARY KEY (Id)
+);
+
+CREATE TABLE Rooms (
+RoomId INTEGER NOT NULL,
+RoomName VARCHAR,
+RoomType VARCHAR,
+RoomPrice INTEGER, RoomDescription TEXT,
+PRIMARY KEY (RoomId)
+);
