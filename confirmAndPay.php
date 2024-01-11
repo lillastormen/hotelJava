@@ -56,7 +56,7 @@ if($bookingSuccessfull) { ?>
 <?php } else { ?>
 <section class="hero" style="background-image: url(Assets/<?= $room["RoomType"] ?>.png);"><div class="gradientRoom"></div></section>
 
-<section class="heroRoomPage">
+<section class="heroPage">
     <h2>Confirm and Pay for your booking of: <?= $room["RoomName"]; ?></h2>
     <form action="confirmAndPay.php?roomId=<?= $roomId ?>" method="POST">
         <label for="transferCode">Transfer Code: </label><br><br>
