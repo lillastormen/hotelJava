@@ -7,7 +7,7 @@ Java, island of Indonesia lying southeast of Malaysia and Sumatra, south of Born
 
 Place where every detail is designed for visitors' comfort, and every moment promises a sense of understated luxury.
 
-(https://panickaro.se/SahajaResort/)
+[Website: ](https://panickaro.se/SahajaResort/)
 
 # Code review
 
