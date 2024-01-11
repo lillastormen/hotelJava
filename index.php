@@ -9,7 +9,7 @@ $rooms = getRooms();
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 
-<section class="hero" style="background-image: url(/Assets/hotel2.png);">  
+<section class="hero" style="background-image: url(../Assets/hotel2.png);">  
     <div class="gradient"></div>     
     <span class="heroSpan">
         <h1>Sahaja Resort</h1>
@@ -28,7 +28,7 @@ $rooms = getRooms();
         foreach ($rooms as $room){?>
         <div>
             <div>
-                <a href="/room.php?id=<?= $room["RoomId"] ?>"><img src="/Assets/<?= $room["RoomType"] ?>.png"></a>
+                <a href="/room.php?id=<?= $room["RoomId"] ?>"><img src="../Assets/<?= $room["RoomType"] ?>.png"></a>
             </div>
             <div>
                 <h3><?= $room["RoomName"] ?></h3>
@@ -57,13 +57,13 @@ $rooms = getRooms();
     <h2>FEATURES</h2>
     <div class="featureImageContainer">
         <div>
-            <img src="/Assets/breakfast.png">
+            <img src="../Assets/breakfast.png">
         </div>
         <div>
-            <img src="/Assets/swimmingpool.png">
+            <img src="../Assets/swimmingpool.png">
         </div>
         <div>
-            <img src="/Assets/minibar.png">
+            <img src="../Assets/minibar.png">
         </div>
     </div>
 </section>
