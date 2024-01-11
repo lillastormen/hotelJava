@@ -47,7 +47,7 @@ if (
 }
 
 if($bookingSuccessfull) { ?>
-    <section class="heroRoomPage">
+    <section class="hero" style="background-image: url(Assets/<?= $room["RoomType"] ?>.png);"><div class="gradientRoom"></div> </section>
         <h2>Payment succesfull! Welcome to Sahaja Resort!</h2>
         <?= print_r($bookingResponse); ?>
     </section>
