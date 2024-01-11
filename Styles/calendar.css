@@ -19,7 +19,8 @@
 }
 
 .calendar tbody tr td.today {
-    display: none;
+    background: none;
+    text-decoration: none;
 }
 
 .calendar-title th {
