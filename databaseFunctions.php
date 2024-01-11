@@ -26,8 +26,8 @@ function getBookingDates($bookingId){
     $query = $db->query("SELECT DepartureDate, ArrivalDate FROM Bookings WHERE BookingId = ". $bookingId);
     
     $result = $query->fetch(); 
-    $arrivalDate = $result['DepartureDate'];
-    $departureDate = $result['ArrivalDate'];
+    $arrivalDate = $result['ArrivalDate'];
+    $departureDate = $result['DepartureDate'];
 
     return [
         "arrival_date" => $arrivalDate,

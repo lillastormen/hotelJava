@@ -47,9 +47,11 @@ if (
 }
 
 if($bookingSuccessfull) { ?>
-    <section class="hero" style="background-image: url(Assets/<?= $room["RoomType"] ?>.png);"><div class="gradientRoom"></div> </section>
-        <h2>Payment succesfull! Welcome to Sahaja Resort!</h2>
-        <?= print_r($bookingResponse); ?>
+    <section class="succesfullPayment">
+        <div>
+            <h2>Payment succesfull! Welcome to Sahaja Resort!</h2>
+            <div><?= print_r($bookingResponse); ?></div>
+        </div>
     </section>
 <?php } else { ?>
 <section class="hero" style="background-image: url(Assets/<?= $room["RoomType"] ?>.png);"><div class="gradientRoom"></div></section>
@@ -63,10 +65,13 @@ if($bookingSuccessfull) { ?>
         <input type="text" id="totalCost" name="totalCost" readonly value="<?= $booking->totalCost; ?>"/><br><br>
         <input type="hidden" id="bookingId" name="bookingId" readonly value="<?= $booking->bookingId; ?>"/>
         <input type="hidden" id="roomId" name="roomId" readonly value="<?= $roomId; ?>"/>
-        <input type="submit" value="Confirm and Pay" />
+        <div class="confirmAndPaYButtonContainer">
+            <input class="submitConfirmAndPayButton" type="submit" value="Confirm and Pay" />
+        </div>
     </form>
 </section>
 
 <?php
 }
 require __DIR__ . '/footer.php'; ?>
+
