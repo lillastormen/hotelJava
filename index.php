@@ -13,7 +13,7 @@ $rooms = getRooms();
     <span class="heroSpan">
         <h1>Sahaja Resort</h1>
         <span class="material-symbols-outlined">star star star</span>
-        <h3>Place where every detail is designed for your comfort, and every moment promises a sense of understated luxury</h3>
+        <h3>Place where every detail is designed for your comfort</h3>
     </span>
 </section>
 
