@@ -52,7 +52,7 @@ if($bookingSuccessfull) { ?>
         <?= print_r($bookingResponse); ?>
     </section>
 <?php } else { ?>
-<section class="hero" style="background-image: url(../Assets/<?= $room["RoomType"] ?>.png);"><div class="gradientRoom"></div></section>
+<section class="hero" style="background-image: url(Assets/<?= $room["RoomType"] ?>.png);"><div class="gradientRoom"></div></section>
 
 <section class="heroRoomPage">
     <h2>Confirm and Pay for your booking of: <?= $room["RoomName"]; ?></h2>
