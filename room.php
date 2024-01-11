@@ -5,19 +5,6 @@ require __DIR__ . '/databaseFunctions.php';
 $roomId = isset($_GET['id']) ? $_GET['id'] : '';
 $room = getARoomById($roomId);
 
-if(
-    isset($_POST["fname"]) && 
-    isset($_POST["lname"]) && 
-    isset($_POST["arrivalDate"]) && 
-    isset($_POST["departureDate"]) && 
-    isset($_POST["features"]) 
-) {
-   $booking = createBooking($_POST["fname"], $_POST["lname"], $_POST["arrivalDate"], $_POST["departureDate"], $roomId, $_POST["features"]);
-   if(!$booking){?>  
-        <script>alert("Booking unsuccessful! Choose different dates and try again!");</script>
-        <?php
-    }
-}
 ?>
 
 
@@ -30,7 +17,7 @@ if(
 </section>
 
 
-
+<!-- booking from goes to confirmAndPay.php -->
 <form name="mainForm" action="/confirmAndPay.php?id=<?= $roomId?>" method="POST">
     <section class="datesForm">
         <h3>1. Choose the dates of your stay: </h3>

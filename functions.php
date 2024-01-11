@@ -66,7 +66,8 @@ function useTransferCode($transferCode, $totalCOST){
                 'totalcost' => $totalCOST,
             ]
         ]);
-
+        
+        //yyyy...???
         $responseDecoded = json_decode($response->getBody()->getContents());
         //If it is a success, then use the transfer code
         if($response->getStatusCode() == 200 && !isset($responseDecoded->error)){
@@ -87,22 +88,3 @@ function useTransferCode($transferCode, $totalCOST){
     } return false;
 }
 
-function getTransferCode(){
-
-    $client = new GuzzleHttp\Client([
-        'base_uri' => 'https://www.yrgopelag.se/centralbank/']);
-
-    $response = $client->request('POST', 'withdraw', [
-        'form_params' => [
-            'user' => 'Rune',
-            'api_key' => '9ca1e3d1-aa16-4455-9936-739984164f40',
-            'amount' => '40'
-        ]
-    ]);
-    echo $response->getStatusCode();           // 200
-    $result = json_decode($response->getBody()->getContents());                 // {"type":"User"...'
-
-    print_r($result);
-    //useTransferCode($result->transferCode, $result->amount);
-}
-//getTransferCode();

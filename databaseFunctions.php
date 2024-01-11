@@ -95,7 +95,9 @@ function createBooking ($guestName, $guestSurname, $arrivalDate, $departureDate,
 }
 
 function payForBooking($bookingId, $transferCode, $totalCost){
-    if(useTransferCode($transferCode, $totalCost)){
+    // function that uses the transfer code at the bank, returns false if the transfer code is invalid
+    // find this function in functions.php
+    if(useTransferCode($transferCode, $totalCost)){ 
         $db = connect('hotel.sqlite3');
         $query = $db->query(
             "UPDATE Bookings 
@@ -131,8 +133,8 @@ function calculateTotalCost ($bookingId){
     
     $query = $db->query(
         "SELECT (julianday(bookings.departureDate) - julianday(bookings.arrivalDate)) AS days,
-        SUM(rooms.roomPrice * (julianday(bookings.departureDate) - julianday(bookings.arrivalDate))) AS roomCost,
-        SUM(features.featurePrice * (julianday(bookings.departureDate) - julianday(bookings.arrivalDate))) AS featureCost
+        (rooms.roomPrice * (julianday(bookings.departureDate) - julianday(bookings.arrivalDate))) AS roomCost,
+        (features.featurePrice * (julianday(bookings.departureDate) - julianday(bookings.arrivalDate))) AS featureCost
         FROM Rooms, Features
         JOIN Bookings ON Rooms.RoomId = Bookings.RoomId
         JOIN BookedFeatures ON Features.FeatureId = BookedFeatures.Id

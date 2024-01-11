@@ -7,6 +7,9 @@ $roomId = isset($_POST['id']) ? $_POST['id'] : $roomId;
 $room = getARoomById($roomId);
 $bookingSuccessfull = false;
 
+
+// Adds booking to database, checks if booking contains all the required information. If it does, it creates an unpaid booking
+// If something is missing or dates are wrong it alerts the user and goes back to room.php
 if(
     isset($_POST["fname"]) && 
     isset($_POST["lname"]) && 
@@ -16,11 +19,17 @@ if(
     $features = isset($_POST["features"]) ? $_POST["features"] : [];
     $booking = json_decode(createBooking($_POST["fname"], $_POST["lname"], $_POST["arrivalDate"], $_POST["departureDate"], $roomId, $features));
    if(!$booking){ ?>  
-        <script>alert("Booking unsuccessful! Choose different dates and try again!"); history.back();</script>
+        <script>alert("Booking unsuccessful! Choose different dates and try again!"); history.back();</script> 
         <?php exit(); 
     }
 }
 
+
+// Checks if payment details are POSTed. If they are they we try to use them to pay for booking
+// 1.Validate the transfer code (useTransferCode() in functions.php, first part)
+// 2. Deposit the transfer code into our bank account (useTransferCode() in functions.php, second part)
+// 3. Update booking in the DB (transfer code, paid, totalCost) (payForBooking() in databaseFunctions.php - this one also calls step 1 )
+// Doing payment and updating the booking in the database
 if (
     isset($_POST["transferCode"]) && 
     isset($_POST["totalCost"]) && 
@@ -42,8 +51,8 @@ if($bookingSuccessfull) { ?>
         <?= print_r($bookingResponse); ?>
     </section>
 <?php } else { ?>
-<section class="hero" style="background-image: url(/Assets/<?= $room["RoomType"] ?>.png);"></section>
-<div class="gradientRoom"></div>
+<section class="hero" style="background-image: url(/Assets/<?= $room["RoomType"] ?>.png);"><div class="gradientRoom"></div></section>
+
 <section class="heroRoomPage">
     <h2>Confirm and Pay for your booking of: <?= $room["RoomName"]; ?></h2>
     <form action="confirmAndPay.php?roomId=<?= $roomId ?>" method="POST">
